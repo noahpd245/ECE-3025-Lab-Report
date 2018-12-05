@@ -7,6 +7,7 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
+\usepackage[table,xcdraw]{xcolor}
 
 \title{RADIATION PATTERN OF A LIGHT-EMITTING DIODE}
 \author{Yehowshua Immanuel, Noah Daugherty}
@@ -16,16 +17,23 @@
 \tableofcontents
 \newpage
 
-\section{INTRODUCTION}
-The intention of this experiment is to characterize the radiation pattern of an LED empirically and verify it analytically. To do this, we make a few critical assumptions.
-\begin{enumerate}
-\item We treat the LED as uniform planar light source.
-\item The radiation pattern of the LED is independent of angle $\phi$.
-\item The experiment is performed at a scale such that the we can treat LED as a point source and the apeture area as differential.
-\end{enumerate}
+\input{Introduction}
 
-We mounted an LED on a rotating platform and recorded power percieved by a power detector at chosen distance R from the LED for angles between -90$\degree$ and 90$\degree$. Using this data, we are able ato determine the total power emitted by the LED and compare it with our analytically derived expected results. We refine our model in an attempt to account for numerical discrepancies between the expected and observed reults. Unfortunately, in a hurry, we forgot to record our station number.
 \section{DATA}
+\subsection{Collection Methodology}
+The following precautions were taken to minimize any error introduced in collecting data.
+
+\begin{itemize}
+    \item We set the aperture radius precisely by closing it flush around a nominally .7mm stick of lead.
+    \item We re-purposed multimeter boxes - which we used as four black walls surrounding our apparatus, minimizing variations in light noise which we noticed could be attributed to movements of the observer. The resulting change in milliVolts detected after installation of the black walls was notable, having decreased by about 20mV. Inevitable background radiation was still present, but having audited previous measurements at certain angles at random, and finding no difference, we safely conclude the background radiation was effectively constant, which we account for in our subsequent computations.
+\end{itemize}
+
+\subsection{Tabulated Results}
+The raw collected data can be found in Appendix A
+
+%%Appedices
+\newpage
+\input{Appendix}
 
 \end{document}
 %\begin{align}
