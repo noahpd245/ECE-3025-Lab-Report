@@ -1,0 +1,67 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{close} \PYG{n}{all}
+\PYG{c}{\PYGZpc{}\PYGZpc{} Conversions}
+\PYG{n}{radians} \PYG{p}{=} \PYG{p}{(}\PYG{n+nb}{angle}\PYG{o}{/}\PYG{l+m+mi}{360}\PYG{p}{)}\PYG{o}{*}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n+nb}{pi}\PYG{p}{;}
+\PYG{n}{nW} \PYG{p}{=} \PYG{p}{(}\PYG{n}{mV} \PYG{o}{\PYGZhy{}} \PYG{l+m+mf}{5.1}\PYG{p}{)}\PYG{o}{*}\PYG{l+m+mi}{2}\PYG{p}{;}
+\PYG{n}{W} \PYG{p}{=} \PYG{n}{nW}\PYG{o}{*}\PYG{l+m+mi}{10}\PYGZca{}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{9}\PYG{p}{);}
+\PYG{n}{WNorm} \PYG{p}{=} \PYG{n}{W}\PYG{o}{/}\PYG{n}{max}\PYG{p}{(}\PYG{n}{W}\PYG{p}{);} \PYG{c}{\PYGZpc{}Ask buck about this}
+ 
+\PYG{c}{\PYGZpc{}\PYGZpc{} Measured and Computed Parameters}
+\PYG{n}{apetureRadius} \PYG{p}{=} \PYG{p}{.}\PYG{l+m+mi}{69}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{l+m+mi}{10}\PYGZca{}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3}\PYG{p}{;}
+\PYG{n}{sphericalRadius} \PYG{p}{=} \PYG{p}{(}\PYG{l+m+mf}{149.63}\PYG{o}{+}\PYG{l+m+mf}{5.00}\PYG{p}{)}\PYG{o}{*}\PYG{l+m+mi}{10}\PYGZca{}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3}\PYG{p}{;}
+\PYG{n}{Ar} \PYG{p}{=} \PYG{n+nb}{pi}\PYG{o}{*}\PYG{p}{(}\PYG{n}{apetureRadius}\PYGZca{}\PYG{l+m+mi}{2}\PYG{p}{);}
+\PYG{n}{P0} \PYG{p}{=} \PYG{n}{max}\PYG{p}{(}\PYG{n}{W}\PYG{p}{);}
+\PYG{n}{I0} \PYG{p}{=} \PYG{n}{P0}\PYG{o}{/}\PYG{n}{Ar}\PYG{p}{;}
+\PYG{n}{K0} \PYG{p}{=} \PYG{n}{I0}\PYG{o}{*}\PYG{p}{(}\PYG{n}{sphericalRadius}\PYGZca{}\PYG{l+m+mi}{2}\PYG{p}{);}
+ 
+\PYG{c}{\PYGZpc{}\PYGZpc{} Least Squares fit }
+\PYG{n}{N} \PYG{p}{=} \PYG{n+nb}{length}\PYG{p}{(}\PYG{n}{radians}\PYG{p}{);}
+\PYG{n}{x} \PYG{p}{=} \PYG{l+m+mi}{0}\PYG{p}{:.}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{l+m+mi}{100}\PYG{p}{;}
+\PYG{n}{tempFit} \PYG{p}{=} \PYG{n+nb}{zeros}\PYG{p}{(}\PYG{n}{N}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{);}
+\PYG{n}{F\PYGZus{}Least\PYGZus{}Squares} \PYG{p}{=} \PYG{n+nb}{zeros}\PYG{p}{(}\PYG{n+nb}{length}\PYG{p}{(}\PYG{n}{x}\PYG{p}{),}\PYG{l+m+mi}{1}\PYG{p}{);}
+
+\PYG{k}{for} \PYG{n}{index} \PYG{p}{=} \PYG{l+m+mi}{1}\PYG{p}{:}\PYG{n+nb}{length}\PYG{p}{(}\PYG{n}{x}\PYG{p}{)}
+\PYG{c}{\PYGZpc{}index = 2;}
+\PYG{k}{for} \PYG{n+nb}{i} \PYG{p}{=} \PYG{l+m+mi}{1}\PYG{p}{:}\PYG{n}{N}
+ \PYG{n}{tempFit}\PYG{p}{(}\PYG{n+nb}{i}\PYG{p}{)} \PYG{p}{=} \PYG{p}{(}\PYG{n}{WNorm}\PYG{p}{(}\PYG{n+nb}{i}\PYG{p}{)} \PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{n+nb}{cos}\PYG{p}{(}\PYG{n}{radians}\PYG{p}{(}\PYG{n+nb}{i}\PYG{p}{))} \PYG{o}{.\PYGZca{}}\PYG{n}{x}\PYG{p}{(}\PYG{n}{index}\PYG{p}{)))}\PYG{o}{.\PYGZca{}}\PYG{l+m+mi}{2}\PYG{p}{;}
+\PYG{k}{end}
+\PYG{n}{F\PYGZus{}Least\PYGZus{}Squares}\PYG{p}{(}\PYG{n}{index}\PYG{p}{)} \PYG{p}{=} \PYG{p}{(}\PYG{l+m+mi}{1}\PYG{o}{/}\PYG{n}{N}\PYG{p}{)}\PYG{o}{*}\PYG{n}{sum}\PYG{p}{(}\PYG{n}{tempFit}\PYG{p}{);}
+\PYG{k}{end}
+\PYG{p}{[}\PYG{n}{minVal} \PYG{n}{minIndex}\PYG{p}{]} \PYG{p}{=} \PYG{n}{min}\PYG{p}{(}\PYG{n}{F\PYGZus{}Least\PYGZus{}Squares}\PYG{p}{);}
+\PYG{n}{powerBestFit} \PYG{p}{=} \PYG{n}{x}\PYG{p}{(}\PYG{n}{minIndex}\PYG{p}{)}
+\PYG{n}{smallestError} \PYG{p}{=} \PYG{n}{F\PYGZus{}Least\PYGZus{}Squares}\PYG{p}{(}\PYG{n}{minIndex}\PYG{p}{)}
+\PYG{c}{\PYGZpc{}\PYGZpc{} Integral}
+\PYG{n}{angleIntegrand} \PYG{p}{=} \PYG{n}{radians}\PYG{p}{(}\PYG{l+m+mi}{27}\PYG{p}{:}\PYG{k}{end}\PYG{p}{);}
+\PYG{n}{WIntegrand} \PYG{p}{=} \PYG{n}{W}\PYG{p}{(}\PYG{l+m+mi}{27}\PYG{p}{:}\PYG{k}{end}\PYG{p}{);}
+\PYG{n}{integral\PYGZus{}angle} \PYG{p}{=} \PYG{p}{((}\PYG{n}{WIntegrand}\PYG{o}{*}\PYG{n}{sphericalRadius}\PYGZca{}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{o}{/}\PYG{n}{Ar}\PYG{p}{)}\PYG{o}{.*}\PYG{n+nb}{sin}\PYG{p}{(}\PYG{n}{angleIntegrand}\PYG{p}{)}\PYG{o}{.*}\PYG{p}{[}\PYG{n}{diff}\PYG{p}{(}\PYG{n}{angleIntegrand}\PYG{p}{);} \PYG{l+m+mi}{0}\PYG{p}{];}
+\PYG{n}{Total\PYGZus{}power} \PYG{p}{=} \PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n+nb}{pi}\PYG{o}{*}\PYG{n}{sum}\PYG{p}{(}\PYG{n}{integral\PYGZus{}angle}\PYG{p}{)}
+\PYG{n}{Total\PYGZus{}power\PYGZus{}predicted} \PYG{p}{=} \PYG{p}{(}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n+nb}{pi}\PYG{o}{*}\PYG{n}{K0}\PYG{p}{)}\PYG{o}{/}\PYG{p}{(}\PYG{n}{powerBestFit} \PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{)}
+
+ \PYG{c}{\PYGZpc{}\PYGZpc{} Plots}
+ 
+\PYG{c}{\PYGZpc{} Radians vs. Power Emitted}
+\PYG{c}{\PYGZpc{}Rad\PYGZus{}vs\PYGZus{}Power = figure;}
+\PYG{c}{\PYGZpc{}axes1 = axes(\PYGZsq{}Parent\PYGZsq{},Rad\PYGZus{}vs\PYGZus{}Power);}
+\PYG{c}{\PYGZpc{}hold(axes1,\PYGZsq{}on\PYGZsq{});}
+\PYG{c}{\PYGZpc{}plot(radians,WNorm);}
+\PYG{c}{\PYGZpc{}hold on}
+\PYG{c}{\PYGZpc{}plot(radians,cos(radians).\PYGZca{}powerBestFit);}
+\PYG{c}{\PYGZpc{}ylabel(\PYGZob{}\PYGZsq{}Power(Watts)\PYGZsq{}\PYGZcb{});}
+\PYG{c}{\PYGZpc{}xlabel(\PYGZob{}\PYGZsq{}Radians\PYGZsq{}\PYGZcb{});}
+\PYG{c}{\PYGZpc{}title(\PYGZob{}\PYGZsq{}Radians vs. Power Emitted\PYGZsq{}\PYGZcb{});}
+\PYG{c}{\PYGZpc{}hold off}
+
+\PYG{c}{\PYGZpc{} Least Squares Plot}
+\PYG{n}{figure2} \PYG{p}{=} \PYG{n}{figure}\PYG{p}{;}
+\PYG{n}{plot}\PYG{p}{(}\PYG{n}{x}\PYG{p}{,}\PYG{n}{F\PYGZus{}Least\PYGZus{}Squares}\PYG{p}{)}
+
+\PYG{c}{\PYGZpc{} Radians vs. Power Emitted polar plot}
+\PYG{n}{figure3} \PYG{p}{=} \PYG{n}{figure}\PYG{p}{;}
+\PYG{c}{\PYGZpc{}axes1 = axes(\PYGZsq{}Parent\PYGZsq{},Rad\PYGZus{}vs\PYGZus{}Power);}
+\PYG{n}{radiansplot} \PYG{p}{=} \PYG{n}{radians}\PYG{p}{;}
+\PYG{n}{polarplot}\PYG{p}{(}\PYG{n}{radiansplot}\PYG{p}{,}\PYG{n}{WNorm}\PYG{p}{);}
+\PYG{n}{hold} \PYG{n}{on}
+\PYG{n}{polarplot}\PYG{p}{(}\PYG{n}{radians}\PYG{p}{,}\PYG{n+nb}{cos}\PYG{p}{(}\PYG{n}{radians}\PYG{p}{)}\PYG{o}{.\PYGZca{}}\PYG{n}{powerBestFit}\PYG{p}{);}
+\PYG{n}{hold} \PYG{n}{off}
+\PYG{n}{title}\PYG{p}{(\PYGZob{}}\PYG{l+s}{\PYGZsq{}Radians vs. Power Emitted Polar\PYGZsq{}}\PYG{p}{\PYGZcb{});}
+\end{Verbatim}
