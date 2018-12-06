@@ -1,10 +1,11 @@
+\clearpage
 \begin{appendices}
 \section{Collected Raw Data}
 \label{app:raw data}
 \pgfplotstabletypeset[col sep=comma,sci zerofill,fixed,fixed zerofill,showpos,
     column type=r,
     every head row/.style={
-        before row={\toprule\multicolumn{2}{c}{Angle} & \multicolumn{1}{c}{Voltage (mV)} & \multicolumn{2}{c}{Angle} & \multicolumn{1}{c}{Voltage (mV)}\\},
+        before row={\toprule\multicolumn{2}{c}{Angle} & \multicolumn{1}{c}{Voltage (\si{mV})} & \multicolumn{2}{c}{Angle} & \multicolumn{1}{c}{Voltage (\si{mV})}\\},
         after row=\midrule},
     every last row/.style={after row=\bottomrule},
     display columns/0/.style={select equal part entry of={0}{2},string type},
@@ -18,16 +19,14 @@
     columns/Meas. Voltage (mV)/.style={precision=1,column name=Measured},
     columns={Meas. Angle,Adj. Angle,Meas. Voltage (mV),Meas. Angle,Adj. Angle,Meas. Voltage (mV)},
     ]{data.csv}
-    \newpage
 
-\newpage
 \section{Normalized Voltages}
 \label{app:norm data}
 %%% TABLE START: Normalized Data
 \pgfplotstabletypeset[col sep=comma,sci zerofill,fixed,fixed zerofill,showpos,
     column type=r,
     every head row/.style={
-        before row={\toprule\multicolumn{2}{c}{Angle} & \multicolumn{1}{c}{Voltage (mV)} & \multicolumn{2}{c}{Angle} & \multicolumn{1}{c}{Voltage (mV)}\\},
+        before row={\toprule\multicolumn{2}{c}{Angle} & \multicolumn{1}{c}{Voltage (\si{mV})} & \multicolumn{2}{c}{Angle} & \multicolumn{1}{c}{Voltage (\si{mV})}\\},
         after row=\midrule},
     every last row/.style={after row=\bottomrule},
     display columns/0/.style={select equal part entry of={0}{2},string type},
@@ -41,5 +40,9 @@
     columns/Norm. Voltage (mV)/.style={precision=4,column name=Normalized},
     columns={Meas. Angle,Adj. Angle,Norm. Voltage (mV),Meas. Angle,Adj. Angle,Norm. Voltage (mV)},
     ]{data.csv}
+\newpage
+\section{Matlab Code}
+\label{app:matlab code}
+\inputminted{Matlab}{Matlab.m}
 
 \end{appendices}
