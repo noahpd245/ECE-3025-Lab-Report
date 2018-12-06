@@ -1,0 +1,28 @@
+\begin{figure}[H]
+    \centering
+\begin{tikzpicture}
+\begin{axis}[
+    xticklabels={%
+      -$\frac{\pi}{2}$,
+      -$\frac{\pi}{4}$,
+      0,
+      $\frac{\pi}{4}$,
+      $\frac{\pi}{2}$,
+    },
+    xmin=-1.5707963267948966,xmax=1.5707963267948966,
+    ymin=0,ymax=1,
+    xtick={-1.5707963267948966,-0.7853981633974483,...,1.5707963267948966},
+    ytick={0,0.2,...,1},
+    x coord trafo/.code=\pgfmathparse{#1*360/(2*pi)},
+    title=,
+    ylabel={Watts},
+    legend entries={normalized,cosine}
+]
+\addplot[no marks,blue] table[col sep=comma, x={Angle}, y={wNorm}]
+{dataPlot.csv};
+\addplot[no markers,red] table[col sep=comma, x={Angle}, y={BestFitCosine}]
+{dataPlot.csv};
+\end{axis}
+\end{tikzpicture}
+\caption{Observed Power (Normalized) vs. Predicted Power (Lambertian Cosine)}
+\end{figure}
