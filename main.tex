@@ -2,12 +2,18 @@
 \usepackage{setspace}
 \usepackage{gensymb}
 \usepackage[hidelinks]{hyperref}
+\newcommand*{\Appendixautorefname}{Appendix}
 \usepackage[letterpaper, portrait, margin=1in]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage[table,xcdraw]{xcolor}
+\usepackage{pgfplotstable,filecontents,booktabs}\usepackage{pgfplots}
+\usepackage[toc,page,title]{appendix}
+\usepgfplotslibrary{polar}
+\pgfplotsset{compat=1.13}
+
 
 \title{RADIATION PATTERN OF A LIGHT-EMITTING DIODE}
 \author{Yehowshua Immanuel, Noah Daugherty}
@@ -19,12 +25,11 @@
 
 \input{Introduction}
 \input{Data}
-
-\section{RESULTS}
-\subsection{Raised Cosine Parameter}
+\input{Results}
 
 
-
+\section{DISCUSSION}
+In our experiment, we ended up finding two maxima for our radiation pattern. Though this is not ideal, it is not unexpected. The two maxima, located at points other than $\theta$ = 0, are likely the result of a non-uniformly shaped LED capsule. Due to the experimental setup, error could also be attributed to a non-constant radius R from the LED to the aperture caused by the LED not being centered over the axis of rotation. Additional error may have been caused by ambient lighting, which was mitigated by subtracting the ambient power reading when the LED was turned off from all of our measurements. This did, however, result in some measurements (closer to +- 90 degrees) that were negative which are obviously not possible. 
 
 %%Appedices
 \newpage
@@ -33,4 +38,3 @@
 \end{document}
 %\begin{align}
 %\end{align}
-

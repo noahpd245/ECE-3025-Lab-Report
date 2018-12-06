@@ -1,0 +1,84 @@
+\section{RESULTS}
+
+\subsection{Normalized Voltages}
+A table containing Normalized Voltages can be found in \autoref{app:norm data}. To normalize our data, we subtracted the ambient voltage (5.1 mV) from all of our measured values and then divided by the maximum voltage observed (517.6 mV at $\theta$ = -14$\degree$).
+    %a) A table of normalized voltages, derived from the data table in the second section
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\subsection{Raised Cosine Parameter}
+The value of the Raised Cosine Parameter n was found using the MATLAB Code in \autoref{app:norm data}. We read in our data, and normalized it, and found the best least squares fit for our data using the equation:
+\[error = \frac{1}{N}\sum_{i=1}^{N}[V_{norm}(\theta_{si}) - cos^{n}(\theta_{si})]^{2}\]
+We used a range of exponents ranging from 0 to 100 with a 0.1 step size and found the best fit exponent to be 30.2 with an normalized error of 0.0077.
+
+    %b) The value of the raised cosine parameter, n, determined by the curve-fitting procedure. Details on the curve fit process should be provided as necessary.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   
+\subsection{Peak Radiation Intensity}
+To find the approximate peak radiation intensity, we used the equation:
+\[K_{0}\approx \frac{P_{0}}{A_{r}}R^{2}\: \: [W/sr]\]
+which uses the maximum power P$_0$, determined from our measurements to be 1.0352 $\mu$W, the aperture area measured as 0.374 mm$^2$, and the distance R from the LED to the aperture of 153.63 mm. 
+    %c) The value of the peak radiation intensity, K0 in the proper units
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Power and Efficiency}
+Placeholder Text
+
+\[P = \frac{2 \pi K_{0}}{n+1}\: \: [W]\]
+
+\[P_{s}=IV\]
+    %d) The calculated total emitted power
+    %e) The calculated supplied electrical power and the wall-plug efficiency
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\subsection{Resultant Data}
+
+\begin{table}[!htb]
+\caption{Measured Parameters}
+\bigskip
+\centering
+\begin{tabular}{l|l}
+\rowcolor[HTML]{C0C0C0} 
+\textbf{Parameter} & \textbf{Value} \\ \hline
+Raised Cosine Exponent, n & 30.2 \\
+Peak Radiation Intensity, K$_0$ & 62.0 mW/sr \\
+Total Emitted Power, P$_0$ & 8.6 mW \\
+Supplied Electrical Power, P$_s$ & 13.6 mW \\
+Wall-Plug Efficiency & 63.235\%
+\end{tabular}
+\end{table}
+
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+    \begin{polaraxis}[
+        xticklabels={%
+          -$\frac{\pi}{2}$,
+          -$\frac{\pi}{4}$,
+          0,
+          $\frac{\pi}{4}$,
+          $\frac{\pi}{2}$,
+        },
+        xmin=-1.5707963267948966,xmax=1.5707963267948966,
+        ymin=0,ymax=1,
+        xtick={-1.5707963267948966,-0.7853981633974483,...,1.5707963267948966},
+        ytick={0,0.2,...,1},
+        ytick pos=left,
+        yticklabel style={anchor=east},
+        ylabel style={anchor=near ticklabel,rotate=90},
+        x coord trafo/.code=\pgfmathparse{#1*360/(2*pi)},
+        title= {},
+        ylabel={Watts},
+        legend entries={Observed Power(Normalized), Predicted Power $Cos^n$},
+        legend style={anchor=west}
+    ]
+    \addplot[no markers,blue] table[col sep=comma, x={Angle}, y={wNorm}]
+    {dataPlot.csv};
+    \addplot[no markers,red] table[col sep=comma, x={Angle}, y={BestFitCosine}]
+    {dataPlot.csv};
+    \end{polaraxis}
+    \end{tikzpicture}
+    \caption{Observed Power (Normalized) vs. Predicted Lambertian Cosine Power Function}
+    \label{fig:polar power}
+\end{figure}
+
+blah blah foo \autoref{fig:polar power} asd gds
+    %f) A polar plot (in the manner of Figs. 2 and 3), showing all data points at angle location (plotted as discrete legible points, please)
+    %g) A polar plot, over-layed on the polar plot of the data points, showing the raised cosine function (a solid curve) obtained from your curve fit.
+    % Polar Plot
