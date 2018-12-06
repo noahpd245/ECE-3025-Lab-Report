@@ -30,42 +30,7 @@
 \input{Introduction}
 \input{Data}
 \input{Results}
-
-\newpage
-\section{DISCUSSION}
-Our results reveal two modes within our radiation pattern. Cursory research revealed a point source is a poor model for a domed LED. The semiconductor die that sits within the post-anvil structure inside the LED must be cut with saw cuts into a cuboid. The typical manufacturing processes for LED’s yield dies with radiation patterns that are best characterized by 6 light cones emerging from a center in an octahedral fashion. The emitted power plot(Figure 1) reveals two modes - what actually appears to be the sum of two raised cosines centered left and right of zero degrees. An easy explanation for this might be two emission cones that are mirrored across the on-axis. This would result in the observed dip at 0 degrees. We propose a new model, the sum of two cosines shifted left and right of center to peak at the two maximums, to account for the two light cones. Using a least squares fit yielded
-\[\cos^{127}(\theta-.1396) + \cos^{127}(\theta+.1396)\]
-
-\begin{figure}[H]
-    \centering
-\begin{tikzpicture}
-\begin{axis}[
-    xticklabels={%
-      -$\frac{\pi}{2}$,
-      -$\frac{\pi}{4}$,
-      0,
-      $\frac{\pi}{4}$,
-      $\frac{\pi}{2}$,
-    },
-    xmin=-1.5707963267948966,xmax=1.5707963267948966,
-    ymin=0,ymax=1,
-    xtick={-1.5707963267948966,-0.7853981633974483,...,1.5707963267948966},
-    ytick={0,0.2,...,1},
-    x coord trafo/.code=\pgfmathparse{#1*360/(2*pi)},
-    title=,
-    ylabel={Watts},
-    legend style={at={(axis cs:0.5,1)},anchor=south west}
-]
-\addplot[no markers,blue] table[col sep=comma, x={Angle}, y={wNorm}]
-{dataPlot.csv};
-\addplot[no markers,red] table[col sep=comma, x={Angle}, y={Re-Fitted Cosine}]
-\legend{Normalized Observed Power, $\cos^{n}$}
-{dataPlot.csv};
-\end{axis}
-\end{tikzpicture}
-\caption{Observed Power (Normalized) vs. \newline Predicted Power (Two Cone Model)}
-\end{figure}
-
+\input{Discussion}
 %%Appedices
 \newpage
 \input{Appendix}

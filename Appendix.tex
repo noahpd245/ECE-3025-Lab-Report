@@ -2,6 +2,8 @@
 \begin{appendices}
 \section{Collected Raw Data}
 \label{app:raw data}
+\begin{table}[h]
+\centering
 \pgfplotstabletypeset[col sep=comma,sci zerofill,fixed,fixed zerofill,showpos,
     column type=r,
     every head row/.style={
@@ -19,10 +21,15 @@
     columns/Meas. Voltage (mV)/.style={precision=1,column name=Measured},
     columns={Meas. Angle,Adj. Angle,Meas. Voltage (mV),Meas. Angle,Adj. Angle,Meas. Voltage (mV)},
     ]{data.csv}
+\end{table}
+
+\clearpage
 
 \section{Normalized Voltages}
 \label{app:norm data}
 %%% TABLE START: Normalized Data
+\begin{table}[h]
+\centering
 \pgfplotstabletypeset[col sep=comma,sci zerofill,fixed,fixed zerofill,showpos,
     column type=r,
     every head row/.style={
@@ -40,7 +47,9 @@
     columns/Norm. Voltage (mV)/.style={precision=4,column name=Normalized},
     columns={Meas. Angle,Adj. Angle,Norm. Voltage (mV),Meas. Angle,Adj. Angle,Norm. Voltage (mV)},
     ]{data.csv}
-\newpage
+\end{table}
+
+\clearpage
 \section{Matlab Code}
 \label{app:matlab code}
 \inputminted{Matlab}{Matlab.m}

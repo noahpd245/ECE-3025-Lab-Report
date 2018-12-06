@@ -7,7 +7,7 @@ A table containing Normalized Voltages can be found in \autoref{app:norm data}. 
 \subsection{Raised Cosine Parameter}
 The value of the Raised Cosine Parameter $n$ was found using the MATLAB Code in \autoref{app:matlab code}. We normalized our data and fit it to a raised cosine using a least squares fit. The formula is provided below for reference:
 \[\text{error} = \frac{1}{N}\sum_{i=1}^{N}[V_{norm}(\theta_{si}) - \cos^{n}(\theta_{si})]^{2}\]
-We used a range of exponents ranging from 0 to 100 with a 0.1 step size and found the best fit exponent to be 33.1 with a normalized error of 0.0077. Figure %%REFERENCE%% shows our measured data with our raised cosine approximation.
+We used a range of exponents ranging from 0 to 100 with a 0.1 step size and found the best fit exponent to be 33.1 with a normalized error of 0.0077.
 
     %b) The value of the raised cosine parameter, n, determined by the curve-fitting procedure. Details on the curve fit process should be provided as necessary.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   
@@ -26,11 +26,13 @@ We obtained an observed total power of $\SI{4.7}{mW}$.
 We analytically computed the total power emitted using the value for $K_0$.
 \[P = \frac{2 \pi K_{0}}{n+1}\: \: [W] =  \frac{2 \pi .0165} {33+1}\: \: [W] = \SI{.03}{W}\]
 To calculate the power supplied to the LED, we measured the voltage across a resistor of know value. The resulting power consumed by the LED is $(9V - 6.54V)*(.0005A) = \SI{13}{mW}$. 
-Thus, the output efficiency of our LED is $\frac{3}{13} = .23$. Various sources in academia confirm that a domed LED has a wall-plug efficiency of $\SI{.26}{W}$, so our value of $\SI{.23}{W}$ is not unreasonable.
+Thus, the output efficiency of our LED is $\frac{3}{13} = .23$. Various sources in academia confirm that a domed LED has a wall-plug efficiency of 0.26, so our value of .23 is not unreasonable.
 
     %d) The calculated total emitted power
     %e) The calculated supplied electrical power and the wall-plug efficiency
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\subsection{Extra Credit}
+As mentioned before, we computed the total power emitted numerically using trapezoid integration which yielded a value of $\SI{4.7}{mW}$. We also analytically computed a value of $ \SI{.03}{W}$. The total power emitted we obtained is 1.5 times larger than our analytically derived value. Some reasone for this discrepancy are presented in the discussion.
 \subsection{Resultant Data}
 
 \begin{table}[!htb]
