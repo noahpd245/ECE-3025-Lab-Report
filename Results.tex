@@ -18,8 +18,10 @@ which uses the maximum power $P_0$, determined from our measurements to be \SI{1
     %c) The value of the peak radiation intensity, K0 in the proper units
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Power and Efficiency}
-Placeholder Text
-
+To calculate the power supplied to the LED, we measured the voltage across a resistor of know value. The resulting power consumed by the LED is $(9V - 6.54V)*(.0005A) = \SI{13}{mW}$. We also numerically computed the power emitted by the LED in the hemisphere facing the apparatus using the equation provided below.
+\[\int_{0}^{2\pi}{\int_{0}^{\frac{\pi}{2}}K(\theta)\cdot \sin(\theta) d \theta d\phi}\]
+We obtained an observed total power of $\SI{4.7}{mW}$.
+Thus, the output efficiency of our LED is $\frac{4.7}{13} = .36$. Various resources in academia confirm that this is not unreasonable.
 \[P = \frac{2 \pi K_{0}}{n+1}\: \: [W]\]
 
 \[P_{s}=IV\]

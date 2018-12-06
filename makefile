@@ -1,4 +1,4 @@
-main.pdf : Appendix.tex Introduction.tex main.tex
+main.pdf : *.tex
 	pdflatex -synctex=1 -shell-escape main.tex
 	pdflatex -synctex=1 -shell-escape main.tex
 clean :
